@@ -25,11 +25,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/TheChillyOne/zcrypto/dsa"
+	"github.com/TheChillyOne/zcrypto/encoding/asn1"
+	"github.com/TheChillyOne/zcrypto/x509/pkix"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/zmap/zcrypto/dsa"
-	"github.com/zmap/zcrypto/encoding/asn1"
-	"github.com/zmap/zcrypto/x509/pkix"
 	"golang.org/x/crypto/curve25519"
 	"golang.org/x/crypto/ed25519"
 )

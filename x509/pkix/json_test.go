@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/zmap/zcrypto/encoding/asn1"
+	"github.com/TheChillyOne/zcrypto/encoding/asn1"
 )
 
 func TestAttributeTypeValueJSON(t *testing.T) {

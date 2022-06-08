@@ -17,8 +17,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/TheChillyOne/zcrypto/ct"
 	"github.com/mreiferson/go-httpclient"
-	"github.com/zmap/zcrypto/ct"
 	"golang.org/x/net/context"
 )
 

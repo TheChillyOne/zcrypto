@@ -11,8 +11,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/zmap/zcrypto/encoding/asn1"
-	"github.com/zmap/zcrypto/x509/pkix"
+	"github.com/TheChillyOne/zcrypto/encoding/asn1"
+	"github.com/TheChillyOne/zcrypto/x509/pkix"
 )
 
 // pkcs8 reflects an ASN.1, PKCS#8 PrivateKey. See

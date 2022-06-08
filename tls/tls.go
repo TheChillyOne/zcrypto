@@ -26,7 +26,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/zmap/zcrypto/x509"
+	"github.com/TheChillyOne/zcrypto/x509"
 )
 
 // Server returns a new TLS server side connection

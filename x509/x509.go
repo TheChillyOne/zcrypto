@@ -35,11 +35,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/TheChillyOne/zcrypto/dsa"
+	"github.com/TheChillyOne/zcrypto/encoding/asn1"
+	"github.com/TheChillyOne/zcrypto/x509/ct"
+	"github.com/TheChillyOne/zcrypto/x509/pkix"
 	"github.com/weppos/publicsuffix-go/publicsuffix"
-	"github.com/zmap/zcrypto/dsa"
-	"github.com/zmap/zcrypto/encoding/asn1"
-	"github.com/zmap/zcrypto/x509/ct"
-	"github.com/zmap/zcrypto/x509/pkix"
 	"golang.org/x/crypto/ed25519"
 )
 

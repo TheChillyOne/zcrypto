@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/zmap/zcrypto/x509"
+	"github.com/TheChillyOne/zcrypto/x509"
 	"golang.org/x/crypto/curve25519"
 )
 

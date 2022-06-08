@@ -9,10 +9,10 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/TheChillyOne/zcrypto/ct"
+	"github.com/TheChillyOne/zcrypto/ct/client"
+	"github.com/TheChillyOne/zcrypto/ct/x509"
 	log "github.com/sirupsen/logrus"
-	"github.com/zmap/zcrypto/ct"
-	"github.com/zmap/zcrypto/ct/client"
-	"github.com/zmap/zcrypto/ct/x509"
 )
 
 // Clients wishing to implement their own Matchers should implement this interface:

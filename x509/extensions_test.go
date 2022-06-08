@@ -12,8 +12,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/zmap/zcrypto/encoding/asn1"
-	"github.com/zmap/zcrypto/x509/pkix"
+	"github.com/TheChillyOne/zcrypto/encoding/asn1"
+	"github.com/TheChillyOne/zcrypto/x509/pkix"
 )
 
 var testName = pkix.Name{

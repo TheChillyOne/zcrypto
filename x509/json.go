@@ -14,11 +14,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/zmap/zcrypto/dsa"
-	"github.com/zmap/zcrypto/encoding/asn1"
-	jsonKeys "github.com/zmap/zcrypto/json"
-	"github.com/zmap/zcrypto/util"
-	"github.com/zmap/zcrypto/x509/pkix"
+	"github.com/TheChillyOne/zcrypto/dsa"
+	"github.com/TheChillyOne/zcrypto/encoding/asn1"
+	jsonKeys "github.com/TheChillyOne/zcrypto/json"
+	"github.com/TheChillyOne/zcrypto/util"
+	"github.com/TheChillyOne/zcrypto/x509/pkix"
 )
 
 var kMinTime, kMaxTime time.Time

@@ -6,9 +6,10 @@ import (
 	"log"
 
 	"encoding/json"
-	ct "github.com/zmap/zcrypto/ct"
-	"github.com/zmap/zcrypto/ct/client"
-	"github.com/zmap/zcrypto/x509"
+
+	ct "github.com/TheChillyOne/zcrypto/ct"
+	"github.com/TheChillyOne/zcrypto/ct/client"
+	"github.com/TheChillyOne/zcrypto/x509"
 )
 
 // Processes the given entry in the specified log.

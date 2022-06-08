@@ -22,7 +22,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/zmap/zcrypto/internal/cfg"
+	"github.com/TheChillyOne/zcrypto/internal/cfg"
 )
 
 // Builder reports the name of the builder running this test
