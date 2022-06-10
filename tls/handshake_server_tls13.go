@@ -77,6 +77,8 @@ func (hs *serverHandshakeStateTLS13) handshake() error {
 
 	atomic.StoreUint32(&c.handshakeStatus, 1)
 
+	c.handshakeLog.KeyMaterial = hs.MakeLog()
+
 	return nil
 }
 
@@ -530,10 +532,12 @@ func (hs *serverHandshakeStateTLS13) sendServerParameters() error {
 
 	hs.transcript.Write(hs.clientHello.marshal())
 	hs.transcript.Write(hs.hello.marshal())
-	if _, err := c.writeRecord(recordTypeHandshake, hs.hello.marshal()); err != nil {
+	_, err := c.writeRecord(recordTypeHandshake, hs.hello.marshal())
+	c.handshakeLog.ServerHello = hs.hello.MakeLog()
+
+	if err != nil {
 		return err
 	}
-	c.handshakeLog.ServerHello = hs.hello.MakeLog()
 
 	if err := hs.sendDummyChangeCipherSpec(); err != nil {
 		return err
@@ -553,7 +557,7 @@ func (hs *serverHandshakeStateTLS13) sendServerParameters() error {
 		serverHandshakeTrafficLabel, hs.transcript)
 	c.out.setTrafficSecret(hs.suite, serverSecret)
 
-	err := c.config.writeKeyLog(keyLogLabelClientHandshake, hs.clientHello.random, clientSecret)
+	err = c.config.writeKeyLog(keyLogLabelClientHandshake, hs.clientHello.random, clientSecret)
 	if err != nil {
 		c.sendAlert(alertInternalError)
 		return err
@@ -618,6 +622,7 @@ func (hs *serverHandshakeStateTLS13) sendServerCertificate() error {
 	hs.transcript.Write(certMsg.marshal())
 	_, err := c.writeRecord(recordTypeHandshake, certMsg.marshal())
 	c.handshakeLog.ServerCertificates = certMsg.MakeLog()
+
 	if err != nil {
 		return err
 	}
@@ -665,7 +670,10 @@ func (hs *serverHandshakeStateTLS13) sendServerFinished() error {
 	}
 
 	hs.transcript.Write(finished.marshal())
-	if _, err := c.writeRecord(recordTypeHandshake, finished.marshal()); err != nil {
+	_, err := c.writeRecord(recordTypeHandshake, finished.marshal())
+	c.handshakeLog.ServerFinished = finished.MakeLog()
+
+	if err != nil {
 		return err
 	}
 
@@ -680,7 +688,7 @@ func (hs *serverHandshakeStateTLS13) sendServerFinished() error {
 		serverApplicationTrafficLabel, hs.transcript)
 	c.out.setTrafficSecret(hs.suite, serverSecret)
 
-	err := c.config.writeKeyLog(keyLogLabelClientTraffic, hs.clientHello.random, hs.trafficSecret)
+	err = c.config.writeKeyLog(keyLogLabelClientTraffic, hs.clientHello.random, hs.trafficSecret)
 	if err != nil {
 		c.sendAlert(alertInternalError)
 		return err
@@ -863,6 +871,7 @@ func (hs *serverHandshakeStateTLS13) readClientFinished() error {
 		c.sendAlert(alertUnexpectedMessage)
 		return unexpectedMessageError(finished, msg)
 	}
+	c.handshakeLog.ClientFinished = finished.MakeLog()
 
 	if !hmac.Equal(hs.clientFinished, finished.verifyData) {
 		c.sendAlert(alertDecryptError)
